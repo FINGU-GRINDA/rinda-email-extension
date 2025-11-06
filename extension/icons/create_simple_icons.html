@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create RINDA Email Icons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .icon-container {
+            margin: 20px 0;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 10px;
+        }
+        button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1557b0;
+        }
+        .instructions {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📧 RINDA Email Icon Generator</h1>
+
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click each "Download" button below</li>
+            <li>Save the downloaded files to the <code>icons/</code> folder</li>
+            <li>Make sure filenames are exactly: <code>icon16.png</code>, <code>icon48.png</code>, <code>icon128.png</code></li>
+        </ol>
+    </div>
+
+    <div class="icon-container">
+        <h3>16x16 Icon</h3>
+        <canvas id="icon16" width="16" height="16"></canvas>
+        <button onclick="downloadIcon('icon16', 'icon16.png')">Download icon16.png</button>
+    </div>
+
+    <div class="icon-container">
+        <h3>48x48 Icon</h3>
+        <canvas id="icon48" width="48" height="48"></canvas>
+        <button onclick="downloadIcon('icon48', 'icon48.png')">Download icon48.png</button>
+    </div>
+
+    <div class="icon-container">
+        <h3>128x128 Icon</h3>
+        <canvas id="icon128" width="128" height="128"></canvas>
+        <button onclick="downloadIcon('icon128', 'icon128.png')">Download icon128.png</button>
+    </div>
+
+    <button onclick="downloadAll()" style="background: #34a853; font-size: 16px; padding: 15px 30px;">
+        ⬇️ Download All Icons
+    </button>
+
+    <script>
+        function createIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+
+            // Background gradient (blue)
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#1a73e8');
+            gradient.addColorStop(1, '#1557b0');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+
+            // White circle
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            const circleSize = size * 0.65;
+            ctx.arc(size / 2, size / 2, circleSize / 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Blue "R" letter
+            ctx.fillStyle = '#1a73e8';
+            ctx.font = `bold ${size * 0.5}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('R', size / 2, size / 2);
+
+            // Badge indicator (for larger icons)
+            if (size >= 48) {
+                // Red circle in top right
+                ctx.fillStyle = '#d93025';
+                ctx.beginPath();
+                const badgeSize = size * 0.25;
+                ctx.arc(size - badgeSize * 0.6, badgeSize * 0.6, badgeSize / 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // White number "3"
+                ctx.fillStyle = 'white';
+                ctx.font = `bold ${badgeSize * 0.7}px Arial`;
+                ctx.fillText('3', size - badgeSize * 0.6, badgeSize * 0.6);
+            }
+        }
+
+        function downloadIcon(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadAll() {
+            setTimeout(() => downloadIcon('icon16', 'icon16.png'), 0);
+            setTimeout(() => downloadIcon('icon48', 'icon48.png'), 500);
+            setTimeout(() => downloadIcon('icon128', 'icon128.png'), 1000);
+            alert('Downloading all 3 icons! Check your Downloads folder.');
+        }
+
+        // Create all icons on page load
+        window.onload = function() {
+            createIcon('icon16', 16);
+            createIcon('icon48', 48);
+            createIcon('icon128', 128);
+        };
+    </script>
+</body>
+</html>

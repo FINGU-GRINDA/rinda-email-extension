@@ -1,0 +1,114 @@
+/* RINDA Email Extension Styles */
+
+/* These styles are injected dynamically via content.js */
+/* This file is kept for reference and future expansion */
+
+:root {
+  --rinda-primary: #1a73e8;
+  --rinda-primary-hover: #1557b0;
+  --rinda-danger: #d93025;
+  --rinda-border: #e0e0e0;
+  --rinda-text-primary: #202124;
+  --rinda-text-secondary: #5f6368;
+  --rinda-bg-hover: #f8f9fa;
+}
+
+/* Toolbar badge */
+.rinda-toolbar-icon::after {
+  content: attr(data-badge);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--rinda-danger);
+  color: white;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: bold;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* Panel container */
+.rinda-panel-container {
+  padding: 16px;
+  max-width: 400px;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+}
+
+.rinda-panel-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--rinda-text-primary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rinda-border);
+}
+
+/* Action cards */
+.rinda-action-card {
+  background: white;
+  border: 1px solid var(--rinda-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rinda-action-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: var(--rinda-primary);
+  background: var(--rinda-bg-hover);
+}
+
+.rinda-action-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.rinda-action-emoji {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.rinda-action-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--rinda-text-primary);
+}
+
+.rinda-action-reason {
+  font-size: 13px;
+  color: var(--rinda-text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Buttons */
+.rinda-send-button {
+  background: var(--rinda-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.rinda-send-button:hover {
+  background: var(--rinda-primary-hover);
+}
+
+.rinda-send-button:disabled {
+  background: var(--rinda-border);
+  color: var(--rinda-text-secondary);
+  cursor: not-allowed;
+}
+
+.rinda-send-button:active {
+  transform: scale(0.98);
+}

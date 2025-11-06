@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(curl:*)",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri ''https://www.inboxsdk.com/build/inboxsdk.js'' -OutFile ''inboxsdk.js''\")",
+      "Bash(python create_icons.py:*)",
+      "Bash(start create_simple_icons.html)",
+      "Bash(dir:*)",
+      "Bash(start chrome chrome://extensions/)",
+      "WebFetch(domain:www.inboxsdk.com)",
+      "WebFetch(domain:docs.inboxsdk.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:register.inboxsdk.com)",
+      "WebFetch(domain:inboxsdk.github.io)",
+      "WebFetch(domain:www.npmjs.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
